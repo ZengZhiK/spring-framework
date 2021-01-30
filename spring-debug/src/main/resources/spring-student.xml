@@ -5,6 +5,8 @@
 	<bean id="student" class="com.zzk.springdebug.model.entity.Student"/>
 
 	<bean id="teacher" class="com.zzk.springdebug.model.entity.Teacher">
+<!--		<lookup-method></lookup-method>-->
+<!--		<replaced-method></replaced-method>-->
 		<property name="student" ref="student"/>
 	</bean>
 </beans>
