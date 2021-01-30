@@ -173,6 +173,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 
 
 	static {
+		// 优先加载上下文关闭事件来防止奇样的类加载问题在应用程序关闭的时候
 		// Eagerly load the ContextClosedEvent class to avoid weird classloader issues
 		// on application shutdown in WebLogic 8.1. (Reported by Dustin Woods.)
 		ContextClosedEvent.class.getName();
@@ -249,6 +250,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 	 * Create a new AbstractApplicationContext with no parent.
 	 */
 	public AbstractApplicationContext() {
+		// 创建资源模式处理器，用来解析当前系统运行的时候需要用到的资源，例如xml文件
 		this.resourcePatternResolver = getResourcePatternResolver();
 	}
 
