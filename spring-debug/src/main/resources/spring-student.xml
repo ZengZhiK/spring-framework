@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	   xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans-2.0.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+	<context:property-placeholder location="classpath:db.properties"/>
 
 	<bean id="student" class="com.zzk.springdebug.model.entity.Student"/>
 
 	<bean id="teacher" class="com.zzk.springdebug.model.entity.Teacher">
 <!--		<lookup-method></lookup-method>-->
 <!--		<replaced-method></replaced-method>-->
+<!--		<meta key="" value=""/>-->
 		<property name="student" ref="student"/>
 	</bean>
 </beans>
