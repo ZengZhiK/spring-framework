@@ -4,29 +4,40 @@
 	   xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans-2.0.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
 	<context:property-placeholder location="classpath:db.properties"/>
 
-	<bean class="com.zzk.springdebug.custompostprocessor.CustomFactoryPostProcessor"/>
+	<!--	<bean class="com.zzk.springdebug.custompostprocessor.CustomFactoryPostProcessor"/>-->
 
-	<bean id="person" class="com.zzk.springdebug.customeditor.Person">
-		<property name="name" value="zzk"/>
-		<property name="address" value="a_b_c"/>
-	</bean>
+	<!--	<bean id="person" class="com.zzk.springdebug.customeditor.Person">-->
+	<!--		<property name="name" value="zzk"/>-->
+	<!--		<property name="address" value="a_b_c"/>-->
+	<!--	</bean>-->
 
-<!--	<bean class="org.springframework.beans.factory.config.CustomEditorConfigurer">-->
-<!--		<property name="propertyEditorRegistrars">-->
-<!--			<list>-->
-<!--				<bean class="com.zzk.springdebug.customeditor.AddressPropertyEditorRegistrar"/>-->
-<!--			</list>-->
-<!--		</property>-->
+	<!--	<bean class="org.springframework.beans.factory.config.CustomEditorConfigurer">-->
+	<!--		<property name="propertyEditorRegistrars">-->
+	<!--			<list>-->
+	<!--				<bean class="com.zzk.springdebug.customeditor.AddressPropertyEditorRegistrar"/>-->
+	<!--			</list>-->
+	<!--		</property>-->
+	<!--	</bean>-->
+
+	<!--	<context:component-scan base-package="com.zzk"/>-->
+	<!--	<bean class="org.springframework.beans.factory.config.CustomEditorConfigurer">-->
+	<!--		<property name="customEditors">-->
+	<!--			<map>-->
+	<!--				<entry key="com.zzk.springdebug.customeditor.Address">-->
+	<!--					<value>com.zzk.springdebug.customeditor.AddressPropertyEditor</value>-->
+	<!--				</entry>-->
+	<!--			</map>-->
+	<!--		</property>-->
 <!--	</bean>-->
-	<context:component-scan base-package="com.zzk"/>
-	<bean class="org.springframework.beans.factory.config.CustomEditorConfigurer">
-		<property name="customEditors">
-			<map>
-				<entry key="com.zzk.springdebug.customeditor.Address">
-					<value>com.zzk.springdebug.customeditor.AddressPropertyEditor</value>
-				</entry>
-			</map>
-		</property>
-	</bean>
 
+	<!--	<bean id="studentConverter" class="com.zzk.springdebug.customconverter.StudentConverter"/>-->
+	<!--	<bean id="conversionService" class="org.springframework.context.support.ConversionServiceFactoryBean">-->
+	<!--		<property name="converters">-->
+	<!--			<set>-->
+	<!--				<ref bean="studentConverter"/>-->
+	<!--			</set>-->
+	<!--		</property>-->
+	<!--	</bean>-->
+
+	<bean id="myFactoryBean" class="com.zzk.springdebug.factorybean.MyFactoryBean"/>
 </beans>

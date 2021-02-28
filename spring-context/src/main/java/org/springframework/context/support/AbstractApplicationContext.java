@@ -557,7 +557,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 			 * 前戏，做容器刷新前的准备工作
 			 * 1、设置容器的启动时间
 			 * 2、设置活跃状态为true
-			 * 3、设置关困状态为false
+			 * 3、设置关闭状态为false
 			 * 4、获Environment对象，并加载当前系统的属性值到Environment对象中
 			 * 5、准备监听器和事件的集合对象，默认为空的集合
 			 */
@@ -579,19 +579,24 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 				postProcessBeanFactory(beanFactory);
 
 				StartupStep beanPostProcess = this.applicationStartup.start("spring.context.beans.post-process");
+				// 调用各种beanFactory处理器
 				// Invoke factory processors registered as beans in the context.
 				invokeBeanFactoryPostProcessors(beanFactory);
 
+				// 注册bean处理器，这里只是注册功能，真正调用的是getBean方法
 				// Register bean processors that intercept bean creation.
 				registerBeanPostProcessors(beanFactory);
 				beanPostProcess.end();
 
+				// 为上下文初始化message源，即不同语言的消息体，国际化处理
 				// Initialize message source for this context.
 				initMessageSource();
 
+				// 初始化事件监听多路广播器
 				// Initialize event multicaster for this context.
 				initApplicationEventMulticaster();
 
+				// 留给了类来初始化其他的bean
 				// Initialize other special beans in specific context subclasses.
 				onRefresh();
 

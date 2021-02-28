@@ -1,6 +1,7 @@
 package com.zzk.springdebug;
 
 import com.zzk.springdebug.customeditor.Person;
+import com.zzk.springdebug.factorybean.MyFactoryBean;
 import com.zzk.springdebug.model.entity.Student;
 import com.zzk.springdebug.model.entity.Teacher;
 import org.springframework.context.ApplicationContext;
@@ -20,7 +21,13 @@ public class SpringDebugTest {
 //		System.out.println(teacher);
 
 		ApplicationContext ac = new ClassPathXmlApplicationContext("custom-editor.xml");
-		Person person = ac.getBean(Person.class);
+		MyFactoryBean myFactoryBean = (MyFactoryBean) ac.getBean("&myFactoryBean");
+		System.out.println(myFactoryBean);
+
+//		Person person = ac.getBean(Person.class);
+//		System.out.println(person);
+
+		Person person = (Person) ac.getBean("myFactoryBean");
 		System.out.println(person);
 	}
 }
