@@ -2,14 +2,29 @@
 <beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	   xmlns:context="http://www.springframework.org/schema/context"
 	   xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans-2.0.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
-	<context:property-placeholder location="classpath:db.properties"/>
+	<!--	<context:property-placeholder location="classpath:db.properties"/>-->
 
+	<!--	<context:component-scan base-package="com.zzk"/>-->
 	<!--	<bean class="com.zzk.springdebug.custompostprocessor.CustomFactoryPostProcessor"/>-->
 
 	<!--	<bean id="person" class="com.zzk.springdebug.customeditor.Person">-->
 	<!--		<property name="name" value="zzk"/>-->
 	<!--		<property name="address" value="a_b_c"/>-->
 	<!--	</bean>-->
+
+	<bean id="person" class="com.zzk.springdebug.customeditor.Person" autowire="byName">
+		<property name="name" value="zzk"/>
+	</bean>
+
+	<bean id="person2" class="com.zzk.springdebug.customeditor.Person" autowire="byType">
+		<property name="name" value="wjh"/>
+	</bean>
+
+	<bean id="address" class="com.zzk.springdebug.customeditor.Address">
+		<property name="city" value="bj"/>
+		<property name="province" value="sd"/>
+		<property name="town" value="cyq"/>
+	</bean>
 
 	<!--	<bean class="org.springframework.beans.factory.config.CustomEditorConfigurer">-->
 	<!--		<property name="propertyEditorRegistrars">-->
@@ -28,7 +43,7 @@
 	<!--				</entry>-->
 	<!--			</map>-->
 	<!--		</property>-->
-<!--	</bean>-->
+	<!--	</bean>-->
 
 	<!--	<bean id="studentConverter" class="com.zzk.springdebug.customconverter.StudentConverter"/>-->
 	<!--	<bean id="conversionService" class="org.springframework.context.support.ConversionServiceFactoryBean">-->
@@ -39,5 +54,15 @@
 	<!--		</property>-->
 	<!--	</bean>-->
 
-	<bean id="myFactoryBean" class="com.zzk.springdebug.factorybean.MyFactoryBean"/>
+	<!--	<bean id="myFactoryBean" class="com.zzk.springdebug.factorybean.MyFactoryBean"/>-->
+
+	<!--	<bean id="zk" class="com.zzk.springdebug.methodoverride.ZK"/>-->
+
+	<!--	<bean id="getBean" class="com.zzk.springdebug.methodoverride.GetBean">-->
+	<!--		<lookup-method name="getBean" bean="zk"/>-->
+	<!--	</bean>-->
+
+	<!--	<bean class="com.zzk.springdebug.resolvebeforeinstantiation.MyInstantiationAwareBeanPostProcessor"/>-->
+
+	<!--	<bean class="com.zzk.springdebug.resolvebeforeinstantiation.Apple"/>-->
 </beans>
